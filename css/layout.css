@@ -77,6 +77,15 @@ body {
 
 
 
+
+/* education Section */
+
+#education-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 /* Project Section */
 
 #my-work-section {
