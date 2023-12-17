@@ -84,7 +84,7 @@ body {
 }
 
 .project-card-education {
-  max-width: calc((100% - 32px) / 2);
+  max-width: calc((80% - 32px) / 2);
   display: flex;
   flex-direction: column;
   gap: 34px;
@@ -135,12 +135,18 @@ body {
 }
 
 .project-image-logo {
-  width: 80%;
+  width: 100%;
   height: 200px;
   object-fit: contain;
   object-position: center;
 }
 
+.project-image-logo {
+  width: 60%;
+  height: 200px;
+  object-fit: contain;
+  object-position: center;
+}
 
 
 /* Project Pages */
