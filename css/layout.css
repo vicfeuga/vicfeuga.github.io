@@ -90,7 +90,7 @@ body {
   max-width: calc((100% - 32px) / 2);
   display: flex;
   flex-direction: column;
-  gap: 34px;
+  gap: 60px;
 }
 
 /* experiences Section */
