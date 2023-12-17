@@ -75,22 +75,19 @@ body {
 }
 
 
-
-
-
 /* education Section */
 
 #education-section {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 60px;
 }
 
 .project-card-education {
   max-width: calc((100% - 32px) / 2);
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 34px;
 }
 
 /* experiences Section */
@@ -115,34 +112,34 @@ body {
   flex-wrap: wrap;
 }
 
-    /* Project Cards */
+/* Project Cards */
 
-    .project-card {
-      max-width: calc((100% - 32px) / 3);
-      display: flex;
-      flex-direction: column;
-      gap: 34px;
-    }
+.project-card {
+  max-width: calc((100% - 32px) / 3);
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
 
-    .project-card-text-container {
-      flex-direction: column;
-      display: flex;
-      gap: 16px
-    }
+.project-card-text-container {
+  flex-direction: column;
+  display: flex;
+  gap: 16px
+}
 
-    .project-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      object-position: center;
-    }
+.project-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
 
-    .project-image-logo {
-      width: 100%;
-      height: 200px;
-      object-fit: contain;
-      object-position: center;
-    }
+.project-image-logo {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  object-position: center;
+}
 
 
 
