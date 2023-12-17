@@ -80,7 +80,7 @@ body {
 #education-section {
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 16px;
 }
 
 .project-card-education {

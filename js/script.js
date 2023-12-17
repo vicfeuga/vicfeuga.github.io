@@ -40,3 +40,8 @@ function erase() {
 document.addEventListener("DOMContentLoaded", function() { // On DOM Load initiate the effect
   if(textArray.length) setTimeout(type, newTextDelay + 250);
 });
+
+document.getElementById('detailsButton').addEventListener('click', function() {
+  // You can replace the message in the alert with your detailed information
+  alert('Here are more details about the item.');
+});
