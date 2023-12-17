@@ -40,14 +40,3 @@ function erase() {
 document.addEventListener("DOMContentLoaded", function() { // On DOM Load initiate the effect
   if(textArray.length) setTimeout(type, newTextDelay + 250);
 });
-
-// JavaScript code
-document.getElementById('detailsButton').addEventListener('click', function() {
-  // Show the modal when the button is clicked
-  document.getElementById('modal').style.display = 'flex';
-});
-
-// Close the modal when the "Close" button is clicked
-document.getElementById('closeModal').addEventListener('click', function() {
-  document.getElementById('modal').style.display = 'none';
-});
