@@ -40,6 +40,14 @@ body {
   -webkit-box-orient: vertical;
 }
 
+.project-card-text-education {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+}
+
 .project-title {
   overflow: hidden;
   text-overflow: ellipsis;
