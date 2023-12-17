@@ -141,14 +141,6 @@ body {
   object-position: center;
 }
 
-.education-image-logo {
-  width: 60%;
-  height: 200px;
-  object-fit: contain;
-  object-position: center;
-}
-
-
 /* Project Pages */
 
 #project-header {
