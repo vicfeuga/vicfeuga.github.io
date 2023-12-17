@@ -41,7 +41,13 @@ document.addEventListener("DOMContentLoaded", function() { // On DOM Load initia
   if(textArray.length) setTimeout(type, newTextDelay + 250);
 });
 
+// JavaScript code
 document.getElementById('detailsButton').addEventListener('click', function() {
-  // You can replace the message in the alert with your detailed information
-  alert('Here are more details about the item.');
+  // Show the modal when the button is clicked
+  document.getElementById('modal').style.display = 'flex';
+});
+
+// Close the modal when the "Close" button is clicked
+document.getElementById('closeModal').addEventListener('click', function() {
+  document.getElementById('modal').style.display = 'none';
 });
