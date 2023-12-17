@@ -86,6 +86,14 @@ body {
   gap: 16px;
 }
 
+/* experiences Section */
+
+#education-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 /* Project Section */
 
 #my-work-section {
