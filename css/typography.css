@@ -1,5 +1,12 @@
+@font-face {
+  font-family: "Inconsolata";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Inconsolata"), url("http://themes.googleusercontent.com/static/fonts/inconsolata/v3/BjAYBlHtW3CJxDcjzrnZCIbN6UDyHWBl620a-IRfuBk.woff") format("woff");
+}
+
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Inconsolata", Helvetica, Arial, sans-serif;
 }
 
 .nav-title {
