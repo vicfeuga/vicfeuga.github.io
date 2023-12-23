@@ -23,8 +23,8 @@ body {
   font-weight: 700;
 }
 
-.subheader-text {
-  font-size: 30px !important;
+#about-section .subheader-text {
+  font-size: 30px;
   font-weight: 700;
 }
 
@@ -50,7 +50,7 @@ body {
 }
 
 .project-title {
-  font-size: 18px !important;
+  font-size: 18px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
