@@ -23,28 +23,7 @@ body {
   font-weight: 700;
 }
 
-/* About Section */
-#about-section .subheader-text span{
-  font-size: 30px;
-  font-weight: 700;
-}
-/* education Section */
-#education-section .subheader-text span{
-  font-size: 30px;
-  font-weight: 700;
-}
-/* experiences Section */
-#experiences-section .subheader-text span{
-  font-size: 30px;
-  font-weight: 700;
-}
-/* Project Section */
-#my-work-section .subheader-text span{
-  font-size: 30px;
-  font-weight: 700;
-}
-
-.subheader-text span{
+.subheader-text {
   font-size: 30px;
   font-weight: 700;
 }
