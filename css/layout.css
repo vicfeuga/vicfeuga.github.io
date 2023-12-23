@@ -15,8 +15,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.row {
+  display: flex;
+}
 
-
+.column {
+  flex: 50%;
+}
 
 /* Main Page Layout */
 
