@@ -33,16 +33,17 @@
       <!-- PROJECT HEADER -->
       <div id="project-header">
 
-        <div class="main-title">deepcarbon</div>
-        <div class="body-text">2nd in the final ranking, with the BOGA team of the Data Challenge 2023 organised by IA Pau and TotalEnergies.
-          Creation of a web application for the automated analysis of lithologies. I mainly focused on building a performant model.<br />
+        <div class="main-title">LetterCraft</div>
+        <div class="body-text">My end of studies project i made with 3 classmates. The objective was to build a tool to generate a cover letter
+          that matches with job offer based on the applicant resume.<br />
           Topics covered :<br />
-          - data labelling <br />
-          - training of a YOLOV5 model for detecting patterns in an image <br />
-          - integration of an OCR solution <br />
-          - creation of a complete workflow integrating segmentation models and OCR
+          - research on best LLM models <br />
+          - prompt engineering for GPT <br />
+          - creating a streamlit application <br />
+          - data scrapping (on web for job offer,on pdf for the resume) <br />
+          - generate .docx document with code
         </div>
-        <image class="project-header-image" src="../assets/images/dc-pc.png">
+        <image class="project-header-image" src="../assets/images/lc-intro.png">
       </div>
       <!-- PROJECT DETAILS -->
       <!-- 
@@ -54,17 +55,15 @@
       <div id="project-details">
         <div class="subheader-text">details</div>
         <div class="project-details-content">
-          <div class="body-text">TOTAL has a library of documents describing the composition of the earth's subsoil in different 
-            geographical areas.<br /><br />
-            The project involves searching each document for the column of a table, generally several pages long, describing in 
-            texture form each mineral resource, the depth of which is represented by the height of the column in the table (the textures of the 
-            mineral resources can be found in a legend in the document, which also needs to be searched). 
-            This table is not standardised: the column searched for is not always in the same place, and the legend has different formats.<br />
+          <div class="body-text">When applying for jobs, the crucial tool is the curriculum vitae (CV). 
+            However, diverse CV formats pose a challenge for our project, as multi-column layouts can confuse OCR software. 
+            To address this, we opted to begin with CVs from LinkedIn, a platform providing an online version easily exportable as a PDF. 
+            This format ensures better recognition by OCR, streamlining the extraction of context and details from the CV.
             <br />
-            The result of the search should be represented in the form of a pie chart, with each pie representing the proportion of each 
-            mineral resource identified in terms of height and depth.<br />
-            A dataset (PDF documents) has been provided.<br /><br />
-            The aim is to use artificial intelligence technologies to search for mineral resources and their proportion in each PDF document.</div>
+            We chose to use the solution offered by OpenAI with its GPT-3 model. 
+            This approach gives us access to a powerful, high-performance model while minimising the hardware requirements on our side, 
+            and the model also has the advantage of being multilingual. It can therefore have a CV in English and an offer in French as input.
+          </div>
         </div>
       </div>
 
@@ -74,20 +73,16 @@
         <div class="project-gallery-content">
         
             <div class="gallery-image-container half-width">
-              <img src="../assets/images/dc-struct.png" class="gallery-image">
-              <span class="image-caption">project structure</span>
+              <img src="../assets/images/lc-resume.png" class="gallery-image">
+              <span class="image-caption">(very) quick resume of the project idea</span>
             </div>
             <div class="gallery-image-container half-width">
-              <img src="../assets/images/dc-cm.png" class="gallery-image">
-              <span class="image-caption">confusin matrix of the final model</span>
+              <img src="../assets/images/lc-test-llama.png" class="gallery-image">
+              <span class="image-caption">testing meta model (ggml-alpaca-7b-q4)</span>
             </div>
             <div class="gallery-image-container">
-              <img src="../assets/images/dc-demo.png" class="gallery-image">
-              <span class="image-caption">demo of final product</span>
-            </div>
-            <div class="gallery-image-container">
-              <img src="../assets/images/dc-regwells.png" class="gallery-image">
-              <span class="image-caption">locate registred wells on the application</span>
+              <img src="../assets/images/lc-example.png" class="gallery-image">
+              <span class="image-caption">project application (streamlit) with output</span>
             </div>
         </div>
       </div>
