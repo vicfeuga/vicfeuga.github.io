@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 	<head>
 		<meta charset="utf-8">
     <!-- <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Inconsolata" /> -->
@@ -12,20 +12,29 @@
     <link rel="stylesheet" href="./css/typography.css">
     <link rel="stylesheet" href="./css/utilities.css">
     
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.tailwindcss.com"></script>
 		<script defer src="./js/script.js"></script>
 	</head>
-	<body>
+	<body class="container mx-auto">
     <!-- NAVBAR -->
-    <div class="navbar">
-      <a class="nav-title-link" href="/">
+    <div class="w-100 flex justify-between items-start container mx-auto pt-5">
         <!-- TODO - Change the "Portfolio Title" to whatever you want displayed in the top left -->
-        <span class="nav-title">victor 🌙</span>
+        <div class="flex flex-col gap-y-3">
+          <span class="nav-title">victor 🌙</span>
+          <ul class="flex flex-col gap-y-1">
+            <li><a href="#portfolio-header">About Me</a></li>
+            <li><a href="#about-section">Skills</a></li>
+            <li><a href="#education-section">Languages</a></li>
+            <li><a href="#education-section">Education</a></li>
+            <li><a href="#experiences-section">Experiences</a></li>
+            <li><a href="#projects-section">Other Projects</a></li>
+            <li><a href="#certifications-section">Certifications</a></li>
+          </ul>
+        </div>
          <!-- TODO - Change the email after 'mailto:' to your email address for contact -->
         <a class="button" href="mailto:vicfeuga@orange.fr">
           <span class="button-text">contact me 📬</span>
         </a>
-      </a>      
     </div>
 
     <!-- MAIN PAGE CONTENT -->
