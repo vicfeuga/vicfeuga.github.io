@@ -6,10 +6,10 @@ if (document.getElementById('my-work-link')) {
 
 const typedTextSpan = document.querySelector(".typed-text");
 
-const textArray = ["data scientist", "ml enthousiaste", "data analyst"];
+const textArray = ["data scientist,", "ml enthousiaste,", "data analyst,"];
 const typingDelay = 130;
 const erasingDelay = 100;
-const newTextDelay = 1500; // Delay between current and next text
+const newTextDelay = 1200; // Delay between current and next text
 let textArrayIndex = 0;
 let charIndex = 0;
 
