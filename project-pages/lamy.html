@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+    <link rel="icon" type="image/x-icon" href="../assets/icons/favicon.ico" />
+     <title>victor</title>
+    <meta name="description" content="victor feuga portfolio.">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+
+		<script defer src="../js/script.js"></script>
+	</head>
+	<body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <a class="nav-title-link" href="../">
+        <!-- TODO - Change the "Portfolio Title" to whatever you want displayed in the top left -->
+        <span class="nav-title">victor 🌙</span>
+         <!-- TODO - Change the email after 'mailto:' to your email address for contact -->
+        <a class="button" href="mailto:vicfeuga@orange.fr">
+          <span class="button-text">contact me 📬</span>
+        </a>
+      </a>
+    </div>
+
+    <!-- MAIN PAGE CONTENT -->
+    <div id="main-content">
+
+      <!-- PROJECT HEADER -->
+      <div id="project-header">
+
+        <div class="main-title">intern in the IT department</div>
+        <div class="body-text">Through this internship, I wanted to increase my knowledge and skills 
+          in IT development and, above all, get my first professional experience in the IT world.<br /><br />
+          The objective of this internship was to set up different tools to help the company LAMY<br />
+          - installation of an online inventory platform (GLPI) that allows the company's IT assets to be referenced<br />
+          - integration of a document indexing plugin under NextCloud using the "full text search" method (allows to search the content inside the documents)<br />
+          - creation of a tool to evaluate the referencing of sites thanks to a simulation of a Google search according to certain keywords
+        </div>
+        <image class="project-header-image" src="../assets/images/lamy-targ.png">
+        <span class="image-caption">google sheet final results</span>
+
+      </div>
+
+      <div id="project-details">
+        <div class="subheader-text">details</div>
+        <div class="project-details-content">
+          <div class="body-text">During my internship, I had the opportunity to carry out several assignments. <b>The first</b> was to set 
+            up a web-based inventory application on an external server. As the company has a large stock of IT equipment, 
+            they needed to have an up-to-date inventory and be able to track it over time.</div>
+          <div class="body-text"><b>The second</b> was to set up a search/indexing engine ("Google type") using the 
+            "full text search" method (searching the content of the document). The aim was 
+            to save the experts time in searching for completed reports (several tens of thousands archived, with many more to come).</div>
+          <div class="body-text">Finally, <b>my last task</b> was to create a python program capable of retrieving the rank of a 
+            domain name in a Google search according to certain keywords. 
+            I had to learn how to use Google's APIs to send the programme's results to a Google Sheets page.</div>
+        </div>
+      </div>
+
+      <!-- IMAGE GALLERY -->
+      <div id="project-gallery">
+        <!-- TODO - Change the 'subheader-text' to whatever you want the Gallery section header to say -->
+        <div class="project-gallery-content">
+        
+            <div class="gallery-image-container half-width">
+              <img src="../assets/images/lamy-glpi.png" class="gallery-image">
+              <span class="image-caption">glpi before -> after</span>
+            </div>
+            <div class="gallery-image-container">
+              <img src="../assets/images/lamy-rnk.png" class="gallery-image">
+              <span class="image-caption">example data on the google sheet</span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer">
+      <!-- 
+        TODO - Change href to your Instagram account (can also delete entire "a" element if no Instagram) 
+
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/victor-feuga/">
+        <image src="../assets/icons/linkedin.svg" class="footer-icon"/>
+      </a>
+
+      <a class="icon-link" target="_blank" href="https://huggingface.co/vicfeuga">
+        <image src="../assets/icons/hf.png" class="footer-icon"/>
+      </a>
+      <!-- 
+        TODO - Change the email after "mailto" to your contact email 
+      
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" href="mailto:vicfeuga@orange.fr">
+        <image src="../assets/icons/mail.svg" class="footer-icon"/>
+      </a>
+    </div>
+
+	</body>
+</html>

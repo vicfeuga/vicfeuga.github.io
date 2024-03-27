@@ -15,8 +15,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.row {
+  display: flex;
+  gap: 20px; /* Adjust the gap as needed */
 
+}
 
+.column {
+  flex: 50%;
+}
 
 /* Main Page Layout */
 
@@ -75,11 +82,46 @@ body {
 }
 
 
+/* education Section */
 
+#education-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 
-/* Project Section */
+.project-card-education {
+  max-width: calc((100% - 32px) / 2);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
-#my-work-section {
+/* hobbies Section */
+
+#hobbies-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.project-card-hobbies {
+  max-width: calc((100% - 32px) / 3);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hobbies-image-logo {
+  width: 70%;
+  height: 100;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* experiences Section */
+
+.experiences-section {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -91,30 +133,32 @@ body {
   flex-wrap: wrap;
 }
 
-    /* Project Cards */
+.project-card {
+  max-width: calc((100% - 32px) / 3);
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
 
-    .project-card {
-      max-width: calc((100% - 32px) / 3);
-      display: flex;
-      flex-direction: column;
-      gap: 34px;
-    }
+.project-card-text-container {
+  flex-direction: column;
+  display: flex;
+  gap: 16px
+}
 
-    .project-card-text-container {
-      flex-direction: column;
-      display: flex;
-      gap: 16px
-    }
+.project-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
 
-    .project-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      object-position: center;
-    }
-
-
-
+.project-image-logo {
+  width: 100%;
+  height: 170px;
+  object-fit: contain;
+  object-position: center;
+}
 
 /* Project Pages */
 
@@ -141,36 +185,65 @@ body {
   gap: 34px;
 }
 
-    /* Project Gallery */
+/* Project Gallery */
 
-    #project-gallery {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
+#project-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 
-    .project-gallery-content {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 34px 16px;
-    }
+.project-gallery-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 34px 16px;
+}
 
-    .gallery-image-container {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+.gallery-image-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
-    .gallery-image-container.half-width {
-      width: calc((100% - 16px) / 2);
-    }
+.gallery-image-container.half-width {
+  width: calc((100% - 16px) / 2);
+}
 
-    .gallery-image {
-      width: 100%;
-      height: auto;
-    }
+.gallery-image {
+  width: 100%;
+  height: auto;
+}
 
+/* Photo Gallery */
+
+#photo-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.photo-gallery-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 8px;
+}
+
+.photo-gallery-image-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.photo-gallery-image-container.half-width {
+  width: calc((100% - 16px) / 2);
+}
+
+.photo-gallery-image {
+  width: 100%;
+  height: auto;
+}
 
 /* Extra Extra large devices (large laptops and desktops, 1200px and below) */
 @media only screen and (max-width: 1600px) {
@@ -218,6 +291,3 @@ body {
     max-width: 100%;
   }
 }
-
-
-

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+    <link rel="icon" type="image/x-icon" href="../assets/icons/favicon.ico" />
+     <title>victor</title>
+    <meta name="description" content="victor feuga portfolio.">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+
+		<script defer src="../js/script.js"></script>
+	</head>
+	<body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <a class="nav-title-link" href="../">
+        <!-- TODO - Change the "Portfolio Title" to whatever you want displayed in the top left -->
+        <span class="nav-title">victor 🌙</span>
+         <!-- TODO - Change the email after 'mailto:' to your email address for contact -->
+        <a class="button" href="mailto:vicfeuga@orange.fr">
+          <span class="button-text">contact me 📬</span>
+        </a>
+      </a>
+    </div>
+
+    <!-- MAIN PAGE CONTENT -->
+    <div id="main-content">
+
+      <!-- PROJECT HEADER -->
+      <div id="project-header">
+
+        <div class="main-title">deepcarbon</div>
+        <div class="body-text">2nd in the final ranking, with the BOGA team of the Data Challenge 2023 organised by IA Pau and TotalEnergies.
+          Creation of a web application for the automated analysis of lithologies. I mainly focused on building a performant model.<br /><br />
+          Topics covered :<br />
+          - data labelling <br />
+          - training of a YOLOV5 model for detecting patterns in an image <br />
+          - integration of an OCR solution <br />
+          - creation of a complete workflow integrating segmentation models and OCR
+        </div>
+        <image class="project-header-image" src="../assets/images/dc-pc.png">
+      </div>
+      <!-- PROJECT DETAILS -->
+      <!-- 
+        TODO
+
+        - Change the 'subheader-text' to whatever header you want for project details
+        - Add paragraphs using the <div class="body-text"></div> elements in the "project-details-content"
+      -->
+      <div id="project-details">
+        <div class="subheader-text">details</div>
+        <div class="project-details-content">
+          <div class="body-text">TOTAL has a library of documents describing the composition of the earth's subsoil in different 
+            geographical areas.<br /><br />
+            The project involves searching each document for the column of a table, generally several pages long, describing in 
+            texture form each mineral resource, the depth of which is represented by the height of the column in the table (the textures of the 
+            mineral resources can be found in a legend in the document, which also needs to be searched). 
+            This table is not standardised: the column searched for is not always in the same place, and the legend has different formats.<br />
+            <br />
+            The result of the search should be represented in the form of a pie chart, with each pie representing the proportion of each 
+            mineral resource identified in terms of height and depth.<br />
+            A dataset (PDF documents) has been provided.<br /><br />
+            The aim is to use artificial intelligence technologies to search for mineral resources and their proportion in each PDF document.</div>
+        </div>
+      </div>
+
+      <!-- IMAGE GALLERY -->
+      <div id="project-gallery">
+        <!-- TODO - Change the 'subheader-text' to whatever you want the Gallery section header to say -->
+        <div class="project-gallery-content">
+        
+            <div class="gallery-image-container half-width">
+              <img src="../assets/images/dc-struct.png" class="gallery-image">
+              <span class="image-caption">project structure</span>
+            </div>
+            <div class="gallery-image-container half-width">
+              <img src="../assets/images/dc-cm.png" class="gallery-image">
+              <span class="image-caption">confusion matrix of the final model</span>
+            </div>
+            <div class="gallery-image-container">
+              <img src="../assets/images/dc-demo.png" class="gallery-image">
+              <span class="image-caption">demo of final product</span>
+            </div>
+            <div class="gallery-image-container">
+              <img src="../assets/images/dc-regwells.png" class="gallery-image">
+              <span class="image-caption">locate registred wells on the application</span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer">
+      <!-- 
+        TODO - Change href to your Instagram account (can also delete entire "a" element if no Instagram) 
+
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/victor-feuga/">
+        <image src="../assets/icons/linkedin.svg" class="footer-icon"/>
+      </a>
+
+      <a class="icon-link" target="_blank" href="https://huggingface.co/vicfeuga">
+        <image src="../assets/icons/hf.png" class="footer-icon"/>
+      </a>
+      <!-- 
+        TODO - Change the email after "mailto" to your contact email 
+      
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" href="mailto:vicfeuga@orange.fr">
+        <image src="../assets/icons/mail.svg" class="footer-icon"/>
+      </a>
+    </div>
+
+	</body>
+</html>

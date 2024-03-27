@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+    <link rel="icon" type="image/x-icon" href="../assets/icons/favicon.ico" />
+     <title>victor</title>
+    <meta name="description" content="victor feuga portfolio.">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+
+		<script defer src="../js/script.js"></script>
+	</head>
+	<body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <a class="nav-title-link" href="../">
+        <!-- TODO - Change the "Portfolio Title" to whatever you want displayed in the top left -->
+        <span class="nav-title">victor 🌙</span>
+         <!-- TODO - Change the email after 'mailto:' to your email address for contact -->
+        <a class="button" href="mailto:vicfeuga@orange.fr">
+          <span class="button-text">contact me 📬</span>
+        </a>
+      </a>
+    </div>
+
+    <!-- MAIN PAGE CONTENT -->
+    <div id="main-content">
+
+      <!-- PROJECT HEADER -->
+      <div id="project-header">
+
+        <div class="main-title">apprentice data scientist</div>
+        <div class="body-text">From September 2022 to September 2023, I did an apprenticeship as a member of the
+          Innovation Desk team at the Scoring Center in the filial Risk of BPN Paribas Personal Finance located
+          in Merignac. Through this year of apprenticeship, I wanted to increase my skills in Data Science,
+          discover new techniques and learn more about the working environment of a big company.<br /><br />
+          Member of the innovation desk team of PF RISK at the Scoring Center<br />
+          Research on different categorical variable encoding techniques for Machine Learning models<br />
+          Development of credit card granting scorecard for an entity in South Africa (logistic regression)<br />
+          Development of classification models in Machine Learning<br />
+          Data analysis and management</div>
+        <image class="project-header-image" src="../assets/images/bnp-header.png">
+      </div>
+      <!-- PROJECT DETAILS -->
+      <!-- 
+        TODO
+
+        - Change the 'subheader-text' to whatever header you want for project details
+        - Add paragraphs using the <div class="body-text"></div> elements in the "project-details-content"
+      -->
+      <div id="project-details">
+        <div class="subheader-text">details</div>
+        <div class="project-details-content">
+          <div class="body-text">The aim of this apprenticeship was, in a first time, to assist the data scientists of the team by doing a
+            research work about categorical encoders. And then, having a more business-oriented mission by
+            building a scorecard using logistic regression to identify “bad debt” individuals on credit cards for a
+            filial in South Africa.</div>
+          <div class="body-text">For <b>the first project</b>, the data preprocessing has a very important influence when it comes to the Machine Learning
+            results. Most of the models can’t handle categorical variables (like RandomForest models which are
+            mainly used at the ScoringCenter), except if we change them into numerical values. The model
+            performances will rely on how we will encode those data. Depending on the method used, the
+            predictions can be highly impacted. And so, the precision might be increased or decreased. Through this research work I learned 
+            new ways of encoding techniques (and their impacts) that can be usefull for data scientists. </div>
+          <div class="body-text">For <b>the second project</b>, the Scoring Center teams often use Logistical Regression models. The aim of these models is to
+            attribute a “score” based on the input information of a client. It is a grade based on the values of his
+            explanatory variables (for example: age, Socio-Professional Category, income). Through this porject I learned how to build and present 
+            a scorecard model. Working on a real business project with a real business goal was very nice. I also learned a lot on the methodology of a business
+            case and how to document your work. </div>
+          <a class="button" href="../assets/reports/BNP.pdf" target="_blank">
+            <span class="button-text">check out my report</span> 
+          </a>
+        </div>
+      </div>
+
+      <!-- IMAGE GALLERY -->
+      <div id="project-gallery">
+        <!-- TODO - Change the 'subheader-text' to whatever you want the Gallery section header to say -->
+        <div class="project-gallery-content">
+        
+            <div class="gallery-image-container half-width">
+              <img src="../assets/images/schema-bnp.png" class="gallery-image">
+              <span class="image-caption">developed programe to evaluate encoding tech</span>
+            </div>
+            <div class="gallery-image-container half-width">
+              <img src="../assets/images/score-card-bnp.png" class="gallery-image">
+              <span class="image-caption">example of a scorecard's action table</span>
+            </div>
+            <div class="gallery-image-container">
+              <img src="../assets/images/bnp-studied-tech.png" class="gallery-image">
+              <span class="image-caption">studied encoding techniques</span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer">
+
+      <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/victor-feuga/">
+        <image src="../assets/icons/linkedin.svg" class="footer-icon"/>
+      </a>
+
+      <a class="icon-link" target="_blank" href="https://huggingface.co/vicfeuga">
+        <image src="../assets/icons/hf.png" class="footer-icon"/>
+      </a>
+      <!-- 
+        TODO - Change the email after "mailto" to your contact email 
+      
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" href="mailto:vicfeuga@orange.fr">
+        <image src="../assets/icons/mail.svg" class="footer-icon"/>
+      </a>
+    </div>
+
+	</body>
+</html>

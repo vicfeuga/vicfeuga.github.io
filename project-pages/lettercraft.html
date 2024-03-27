@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+    <link rel="icon" type="image/x-icon" href="../assets/icons/favicon.ico" />
+     <title>victor</title>
+    <meta name="description" content="victor feuga portfolio.">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+
+		<script defer src="../js/script.js"></script>
+	</head>
+	<body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <a class="nav-title-link" href="../">
+        <!-- TODO - Change the "Portfolio Title" to whatever you want displayed in the top left -->
+        <span class="nav-title">victor 🌙</span>
+         <!-- TODO - Change the email after 'mailto:' to your email address for contact -->
+        <a class="button" href="mailto:vicfeuga@orange.fr">
+          <span class="button-text">contact me 📬</span>
+        </a>
+      </a>
+    </div>
+
+    <!-- MAIN PAGE CONTENT -->
+    <div id="main-content">
+
+      <!-- PROJECT HEADER -->
+      <div id="project-header">
+
+        <div class="main-title">LetterCraft</div>
+        <div class="body-text">My end of studies project i made with 3 classmates. The objective was to build a tool to generate a cover letter
+          that matches with job offer based on the applicant resume.<br /><br />
+          Topics covered :<br />
+          - research on best LLM models <br />
+          - prompt engineering for GPT <br />
+          - creating a streamlit application <br />
+          - data scrapping (on web for job offer,on pdf for the resume) <br />
+          - generate .docx document with code
+        </div>
+        <image class="project-header-image" src="../assets/images/lc-intro.png">
+      </div>
+      <!-- PROJECT DETAILS -->
+      <!-- 
+        TODO
+
+        - Change the 'subheader-text' to whatever header you want for project details
+        - Add paragraphs using the <div class="body-text"></div> elements in the "project-details-content"
+      -->
+      <div id="project-details">
+        <div class="subheader-text">details</div>
+        <div class="project-details-content">
+          <div class="body-text">When applying for jobs, the crucial tool is the curriculum vitae (CV). 
+            However, diverse CV formats pose a challenge for our project, as multi-column layouts can confuse OCR software. 
+            To address this, we opted to begin with CVs from LinkedIn, a platform providing an online version easily exportable as a PDF. 
+            This format ensures better recognition by OCR, streamlining the extraction of context and details from the CV.
+            <br />
+            We chose to use the solution offered by OpenAI with its GPT-3 model. 
+            This approach gives us access to a powerful, high-performance model while minimising the hardware requirements on our side, 
+            and the model also has the advantage of being multilingual. It can therefore have a CV in English and an offer in French as input.
+          </div>
+        </div>
+      </div>
+
+      <!-- IMAGE GALLERY -->
+      <div id="project-gallery">
+        <!-- TODO - Change the 'subheader-text' to whatever you want the Gallery section header to say -->
+        <div class="project-gallery-content">
+        
+            <div class="gallery-image-container half-width">
+              <img src="../assets/images/lc-resume.png" class="gallery-image">
+              <span class="image-caption">(very) quick resume of the project idea</span>
+            </div>
+            <div class="gallery-image-container half-width">
+              <img src="../assets/images/lc-test-llama.png" class="gallery-image">
+              <span class="image-caption">testing meta model (ggml-alpaca-7b-q4)</span>
+            </div>
+            <div class="gallery-image-container">
+              <img src="../assets/images/lc-example.png" class="gallery-image">
+              <span class="image-caption">project application (streamlit) with output</span>
+            </div>
+            <div class="gallery-image-container">
+              <img src="../assets/images/lc-gif.gif" class="gallery-image">
+              <span class="image-caption">project run</span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer">
+      <!-- 
+        TODO - Change href to your Instagram account (can also delete entire "a" element if no Instagram) 
+
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/victor-feuga/">
+        <image src="../assets/icons/linkedin.svg" class="footer-icon"/>
+      </a>
+
+      <a class="icon-link" target="_blank" href="https://huggingface.co/vicfeuga">
+        <image src="../assets/icons/hf.png" class="footer-icon"/>
+      </a>
+      <!-- 
+        TODO - Change the email after "mailto" to your contact email 
+      
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" href="mailto:vicfeuga@orange.fr">
+        <image src="../assets/icons/mail.svg" class="footer-icon"/>
+      </a>
+    </div>
+
+	</body>
+</html>
