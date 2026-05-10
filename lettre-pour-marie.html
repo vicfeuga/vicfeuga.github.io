@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lettre de Voyage</title>
+
+  <style>
+    /* ============================================================
+       IMPORT DES POLICES GOOGLE FONTS
+       ============================================================ */
+    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap');
+
+    /* ============================================================
+       RESET DE BASE
+       ============================================================ */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+
+    /* ============================================================
+       FOND TEXTURÉ — TRICOT SAEKDONG 색동
+       ============================================================
+       Inspiré des manches multicolores du hanbok traditionnel.
+       Quatre couleurs Obangsaek 오방색 par cycle :
+         • Balgang  (rouge)   #FF0000
+         • Norang   (jaune)   #FFFF00
+         • Parang   (bleu)    #0000FF
+         • Gumjung  (noir)    #000000
+       Les trois couches (ombre noire / corps coloré / reflet
+       blanc) donnent le relief 3D du fil tricoté.
+       ============================================================ */
+    body {
+      font-family: 'Merriweather', Georgia, serif;
+      color: #3a2e1a;
+      background-color: #FFFFFF;            /* Haying — blanc, base */
+      background-image:
+        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='80' viewBox='0 0 32 80'><g fill='none' stroke-linecap='butt' stroke-linejoin='bevel'><g stroke='%23000000' stroke-width='14' opacity='0.65'><path d='M0 0 L16 26 L32 0'/><path d='M0 27 L16 53 L32 27'/><path d='M0 54 L16 80 L32 54'/></g><g stroke-width='11' opacity='0.79'><path d='M0 0 L16 26 L32 0' stroke='%23FF0000'/><path d='M0 27 L16 53 L32 27' stroke='%23FFFF00'/><path d='M0 54 L16 80 L32 54' stroke='%230000FF'/></g></g></svg>");
+      background-size: 26.67px 66.67px;     /* 3 rangées (rouge, jaune, bleu), opacité 0.79 */
+      background-repeat: repeat;
+      overflow: hidden;
+    }
+
+    /* Active le scroll global lorsque la lettre pleine page est affichée */
+    body.letter-mode { overflow: auto; }
+
+    /* ============================================================
+       ÉTAPE 1 — SCÈNE & ENVELOPPE FERMÉE
+       ============================================================ */
+    .stage {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s ease-out;
+    }
+    .stage.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .envelope {
+      position: relative;
+      width: 440px;
+      height: 290px;
+      cursor: pointer;
+      perspective: 1500px;     /* nécessaire pour la rotation 3D du rabat */
+      transition: transform 0.4s ease-out;
+      outline: none;
+    }
+    /* Soulèvement subtil au hover (avant ouverture) */
+    .envelope:not(.open):hover { transform: translateY(-5px); }
+
+    /* ----- Dos de l'enveloppe (couche arrière + ombre portée) ----- */
+    .envelope-back {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #e0e0e0 0%, #c8c8c8 100%);
+      border-radius: 4px;
+      box-shadow:
+        0 25px 35px rgba(70, 40, 10, 0.30),
+        0 8px 12px rgba(70, 40, 10, 0.18);
+      z-index: 1;
+    }
+
+    /* ----- La lettre qui sort de l'enveloppe (preview) ----- */
+    .letter-preview {
+      position: absolute;
+      left: 6%;
+      top: 6%;
+      width: 88%;
+      height: 88%;
+      background: #fdfaf3;
+      background-image: repeating-linear-gradient(
+        transparent 0,
+        transparent 19px,
+        rgba(58, 46, 26, 0.10) 19px,
+        rgba(58, 46, 26, 0.10) 20px);
+      box-shadow:
+        0 8px 18px rgba(0,0,0,0.22),
+        inset 0 0 30px rgba(245,230,200,0.4);
+      border-radius: 2px;
+      z-index: 2;
+      transform: translateY(100%);   /* commence "rangée" sous l'enveloppe */
+      opacity: 0;
+    }
+
+    /* Quelques traits fictifs pour évoquer un texte manuscrit dans la preview */
+    .letter-preview::before {
+      content: '';
+      position: absolute;
+      top: 22px; left: 22px; right: 22px; bottom: 22px;
+      background:
+        linear-gradient(rgba(58,46,26,0.20) 60%, transparent 60%) 0   0/100% 38px no-repeat,
+        linear-gradient(rgba(58,46,26,0.20) 75%, transparent 75%) 0  38px/70%  38px no-repeat,
+        linear-gradient(rgba(58,46,26,0.20) 70%, transparent 70%) 0  76px/85%  38px no-repeat,
+        linear-gradient(rgba(58,46,26,0.20) 65%, transparent 65%) 0 114px/78%  38px no-repeat;
+      pointer-events: none;
+    }
+
+    /* ----- Corps avant de l'enveloppe (cache la moitié inférieure) ----- */
+    .envelope-front {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 62%;
+      background: linear-gradient(170deg, #f5f5f5 0%, #e2e2e2 100%);
+      border-radius: 0 0 4px 4px;
+      z-index: 3;
+      overflow: hidden;
+    }
+
+    /* ----- Adresse manuscrite (destinataire) en bas à droite ----- */
+    .recipient {
+      position: absolute;
+      bottom: 12%;
+      right: 8%;
+      font-family: 'Caveat', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho ProN',
+                   'Noto Serif CJK JP', 'MS Mincho', cursive, serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: #2c2c2c;
+      letter-spacing: 0.5px;
+      transform: rotate(-2deg);
+      transform-origin: bottom right;
+      z-index: 5;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    /* ----- Rabat triangulaire avec rotation 3D sur l'axe X ----- */
+    .flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 49.6%;                         /* rabat réduit de 20 % (62 % × 0.8) */
+      transform-origin: top;
+      transform-style: preserve-3d;          /* affiche les deux faces */
+      transform: rotateX(0deg);
+      transition:
+        transform 0.6s cubic-bezier(0.55, 0, 0.4, 1),
+        z-index 0s linear 0.6s;              /* baisse le z-index APRÈS l'ouverture */
+      z-index: 4;
+    }
+    /* Faces avant / arrière du rabat */
+    .flap-face {
+      position: absolute;
+      inset: 0;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      backface-visibility: hidden;
+    }
+    .flap-face.front {
+      background: linear-gradient(165deg, #ededed 0%, #d6d6d6 100%);
+    }
+    .flap-face.back {
+      background: linear-gradient(345deg, #c4c4c4 0%, #ababab 100%);
+      transform: rotateY(180deg);            /* face arrière, symétrique */
+    }
+
+    /* ----- Texte d'invite sous l'enveloppe ----- */
+    .hint {
+      margin-top: 36px;
+      color: #6b4f2a;
+      font-style: italic;
+      font-size: 16px;
+      letter-spacing: 1.5px;
+      animation: pulse 2.4s ease-in-out infinite;
+      transition: opacity 0.3s ease-out;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.45; }
+      50%      { opacity: 0.85; }
+    }
+    .stage.opened .hint { opacity: 0; }
+
+    /* ============================================================
+       ÉTAPE 2 — ANIMATIONS D'OUVERTURE
+       ============================================================ */
+
+    /* 1) Le rabat pivote vers le haut (3D, axe X) */
+    .envelope.open .flap {
+      transform: rotateX(-180deg);
+      z-index: 1;                            /* derrière la lettre une fois ouvert */
+    }
+
+    /* 3) La lettre monte depuis l'intérieur de l'enveloppe */
+    .envelope.open .letter-preview {
+      animation: letter-rise 0.8s 0.4s cubic-bezier(0.34, 1.05, 0.64, 1) forwards;
+    }
+    @keyframes letter-rise {
+      0%   { transform: translateY(100%); opacity: 0; }
+      100% { transform: translateY(-20%); opacity: 1; }
+    }
+
+    /* ============================================================
+       ÉTAPE 3 — VUE LETTRE PLEINE PAGE
+       ============================================================ */
+    .letter-view {
+      position: fixed;
+      inset: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 60px 20px;
+      background-color: #FFFFFF;            /* Haying — blanc, base */
+      /* Même motif tricot saekdong (3 couleurs Obangsaek) */
+      background-image:
+        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='80' viewBox='0 0 32 80'><g fill='none' stroke-linecap='butt' stroke-linejoin='bevel'><g stroke='%23000000' stroke-width='14' opacity='0.5'><path d='M0 0 L16 26 L32 0'/><path d='M0 27 L16 53 L32 27'/><path d='M0 54 L16 80 L32 54'/></g><g stroke-width='11' opacity='0.79'><path d='M0 0 L16 26 L32 0' stroke='%23FF0000'/><path d='M0 27 L16 53 L32 27' stroke='%23FFFF00'/><path d='M0 54 L16 80 L32 54' stroke='%230000FF'/></g></g></svg>");
+      background-size: 26.67px 66.67px;     /* 3 rangées (rouge, jaune, bleu), opacité 0.79 */
+      background-repeat: repeat;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.7s ease-in;
+      z-index: 10;
+    }
+    .letter-view.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ----- La feuille de lettre ----- */
+    .letter {
+      position: relative;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 70px 60px 90px;
+      background: #fdfaf3;
+      box-shadow:
+        0 12px 40px rgba(50, 30, 10, 0.18),
+        0 2px 8px  rgba(0, 0, 0, 0.06);
+      line-height: 32px;
+      color: #3a2e1a;
+      animation: letter-fade-in 0.9s ease-out;
+    }
+    @keyframes letter-fade-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ----- Coin replié en bas à droite (CSS pur) ----- */
+    .letter::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg,
+          rgba(0,0,0,0)   0%,
+          rgba(0,0,0,0)  50%,
+          #ede0c0        50%,
+          #d9c89c       100%);
+      box-shadow: -3px -3px 8px rgba(0,0,0,0.12);
+      pointer-events: none;
+    }
+
+    /* ----- Typographie de la lettre ----- */
+    .letter-header {
+      text-align: right;
+      font-style: italic;
+      color: #8a6f3d;
+      margin-bottom: 40px;
+      font-size: 16px;
+    }
+
+    .letter-greeting {
+      font-family: 'Caveat', cursive;
+      font-size: 42px;
+      font-weight: 700;
+      color: #2c2416;
+      margin-bottom: 30px;
+      line-height: 1;
+    }
+
+    .letter-body p {
+      margin-bottom: 22px;
+      text-align: justify;
+      hyphens: auto;
+    }
+    .letter-body p:first-of-type::first-letter {
+      font-size: 1.5em;
+      font-weight: 700;
+      color: #5a4528;
+    }
+
+    .letter-signature {
+      margin-top: 50px;
+      font-family: 'Caveat', cursive;
+      font-size: 30px;
+      color: #2c2416;
+      text-align: right;
+      line-height: 1.3;
+    }
+
+    /* ============================================================
+       RESPONSIVE — petits écrans
+       ============================================================ */
+    @media (max-width: 520px) {
+      .envelope { width: 320px; height: 210px; }
+      .letter { padding: 45px 28px 70px; }
+      .letter-greeting { font-size: 34px; }
+      .letter-signature { font-size: 26px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       SCÈNE — ENVELOPPE FERMÉE
+       ============================================================ -->
+  <div class="stage" id="stage">
+
+    <div class="envelope" id="envelope" role="button" tabindex="0">
+
+      <!-- Dos de l'enveloppe (porte l'ombre) -->
+      <div class="envelope-back"></div>
+
+      <!-- La lettre qui sortira de l'enveloppe lors de l'ouverture -->
+      <div class="letter-preview"></div>
+
+      <!-- Corps avant de l'enveloppe -->
+      <div class="envelope-front"></div>
+
+      <!-- À PERSONNALISER : nom du destinataire (visible enveloppe fermée) -->
+      <div class="recipient">Mademoiselle 黒田</div>
+
+      <!-- Rabat triangulaire (rotation 3D) -->
+      <div class="flap">
+        <div class="flap-face back"></div>
+        <div class="flap-face front"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ============================================================
+       LETTRE PLEINE PAGE (état final, scrollable)
+       ============================================================ -->
+  <div class="letter-view" id="letterView">
+    <article class="letter">
+
+      <header class="letter-header">
+        Seoul, 11 mai 2026
+      </header>
+
+      <h1 class="letter-greeting">
+        茉莉へ,
+      </h1>
+
+      <!-- À PERSONNALISER : corps de la lettre (paysages, rencontres, émotions) -->
+      <div class="letter-body">
+        <p>
+          J’espère que cette lettre te trouvera bien. Après quelques jours à Séoul, me voilà rentré à Singapour. Comme promis, je te
+          partage les adresses qui m’ont plu.
+        </p>
+        
+        <p>
+          Si tu veux voir une belle vue de Séoul avec l’emblématique muraille de la ville, je te recommande de te balader au
+          <a href="https://maps.app.goo.gl/R3S9ehSgTpRYNjug8" target="_blank" rel="noopener">parc Naksan</a>.
+          Dans ce coin, je te conseille de profiter du coucher de soleil sur la terrasse d’un café
+          (<a href="https://maps.app.goo.gl/WGizYdAehrtbYECx5" target="_blank" rel="noopener">Cafe Gaebbul</a>). Et
+          de manger dans un petit restaurant mignon avec vue sur la ville
+          (<a href="https://maps.app.goo.gl/XFF8nP7gPRDT9ckC6" target="_blank" rel="noopener">여수서대</a>).
+          Il y a aussi 2 petits endroits bon en bas du parcours. Pour les gimbaps:
+          <a href="https://maps.app.goo.gl/SbLPm4WqQNPpuW7V8" target="_blank" rel="noopener">김가네 동대문역점</a>.
+          Et pour un café avec vue: <a href="https://maps.app.goo.gl/V8GuHEEEiEwMqMFK7" target="_blank" rel="noopener">Jeonggeurida</a>.
+          Mais surtout, va acheter un souvenir
+          <a href="https://maps.app.goo.gl/eeHRQ2cS6jKhzwiZ6" target="_blank" rel="noopener">chez une おばあちゃん trop mignonne</a>.
+          Elle s’appelle Sofia. Si tu dis que tu es “Victor’s girlfriend”, elle devrait être contente de te voir et te donner quelque chose.
+          この写真を見せてみて :<br>
+          <img src="pic_sofia.jpg" alt="Photo de Sofia" style="max-width: 220px; display: block; margin-top: 0.3em;" />
+        </p>
+        
+        <p>
+          Pour profiter d’un joli palais, je te recommande de visiter le
+          <a href="https://maps.app.goo.gl/Q6ihhSTfK7hDqPbS7" target="_blank" rel="noopener">palais de Changdeok</a>.
+          À l’ouest de celui-ci, le quartier est très mignon, avec des boutiques et des cafés très chics
+          (<a href="https://maps.app.goo.gl/Q6ihhSTfK7hDqPbS7" target="_blank" rel="noopener">Coffee & Brunch - The Hanok</a>,
+          <a href="https://maps.app.goo.gl/STG9cc4Ts5r91GuGA" target="_blank" rel="noopener">LUNA Touch</a>).
+          Tu peux t’y balader un peu, puis terminer la journée avec un petit verre au
+          <a href="https://maps.app.goo.gl/pcKsFKJNERKapUNGA" target="_blank" rel="noopener">Public Dowon</a>
+          et manger dans les célèbres
+          <a href="https://maps.app.goo.gl/DSCsAfigqYAcQnZdA" target="_blank" rel="noopener">pojangmacha</a>.
+        </p>
+        
+        <p>
+          Évidemment, comment passer à côté du fameux
+          <a href="https://maps.app.goo.gl/Q6ihhSTfK7hDqPbS7" target="_blank" rel="noopener">palais de Gyeongbokgung</a> ?
+          Si tu es dans le coin, va voir le
+          <a href="https://maps.app.goo.gl/yFDS8ncL4qFoBQ3w8" target="_blank" rel="noopener">Jogyesa Temple</a>
+          qui a plein de lanternes en ce moment !
+          Il y a une bonne pizzeria pas très loin,
+          <a href="https://maps.app.goo.gl/wLCcWVLBnbGLjHVa8" target="_blank" rel="noopener">Pizzeria HokeyPokey</a>,
+          si tu veux manger à emporter au bord du
+          <a href="https://maps.app.goo.gl/CLLqjY5NHAxvyMPJA" target="_blank" rel="noopener">Cheonggyecheon</a>.
+        </p>
+        
+        <p>
+          J’ai oublié de noter plein d’adresses, désolé. Mais si jamais tu passes vers Gangnam, va voir ce parc :
+          <a href="https://maps.app.goo.gl/VcJ5VyRmvAnh9Pr78" target="_blank" rel="noopener">Seolleung and Jeongneung Royal Tombs</a>.
+        </p>
+        
+        <p>
+          Bonne découverte de la ville !
+        </p>
+        
+      </div>
+
+      <footer class="letter-signature">
+        また,<br/>
+        Victor
+      </footer>
+
+    </article>
+  </div>
+
+
+  <!-- ============================================================
+       LOGIQUE D'OUVERTURE — Vanilla JS
+       ============================================================ -->
+  <script>
+    (() => {
+      const envelope   = document.getElementById('envelope');
+      const stage      = document.getElementById('stage');
+      const letterView = document.getElementById('letterView');
+
+      // Durées : rabat 0.6s + délai lettre 0.4s + lettre 0.8s ≈ 1.2s,
+      // on attend 1.4s par sécurité avant de basculer en vue pleine page.
+      const TRANSITION_DELAY_MS = 1400;
+
+      let opened = false;
+
+      function openEnvelope() {
+        if (opened) return;
+        opened = true;
+
+        envelope.classList.add('open');
+        stage.classList.add('opened');
+
+        setTimeout(() => {
+          stage.classList.add('fade-out');
+          letterView.classList.add('show');
+          document.body.classList.add('letter-mode');
+          letterView.scrollTop = 0;
+        }, TRANSITION_DELAY_MS);
+      }
+
+      envelope.addEventListener('click', openEnvelope);
+
+      envelope.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openEnvelope();
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
