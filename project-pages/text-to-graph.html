@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+    <link rel="icon" type="image/x-icon" href="../assets/icons/favicon.ico" />
+     <title>victor</title>
+    <meta name="description" content="victor feuga portfolio.">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+
+		<script defer src="../js/script.js"></script>
+	</head>
+	<body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <a class="nav-title-link" href="../">
+        <span class="nav-title">victor 🌙</span>
+        <a class="button" href="mailto:vicfeuga@gmail.com">
+          <span class="button-text">contact me 📬</span>
+        </a>
+      </a>
+    </div>
+
+    <!-- MAIN PAGE CONTENT -->
+    <div id="main-content">
+
+      <!-- PROJECT HEADER -->
+      <div id="project-header">
+
+        <div class="main-title">Text to Graph Assistant</div>
+        <div class="body-text">An application that lets anyone query a database in plain English and automatically get back
+          the SQL query, the data and the most relevant chart. Built with Google Gemini and the Model Context Protocol (MCP).<br /><br />
+          Topics covered :<br />
+          - natural language to SQL with Gemini (prompt engineering, schema context) <br />
+          - MCP architecture: client (Streamlit) separated from the server hosting the tool <br />
+          - automatic chart selection and generation with Plotly <br />
+          - PostgreSQL database <br />
+          - containerization with Docker &amp; Docker Compose <br /><br />
+          <a target="_blank" href="https://github.com/vicfeuga/text-to-graph"><u>see the code on GitHub</u></a>
+        </div>
+      </div>
+
+      <!-- PROJECT DETAILS -->
+      <div id="project-details">
+        <div class="subheader-text">details</div>
+        <div class="project-details-content">
+          <div class="body-text">The database models the product sales of a French bakery 🥐: products (croissants, chocolatines, baguettes, ...)
+            with their category and price, their key ingredients, and detailed sales records from January 2022 to December 2025.
+            <br /><br />
+            When a question is submitted, a first Gemini call acts as a gatekeeper and rejects questions that are unrelated to the data.
+            Then the Streamlit app, acting as the MCP host, calls a single MCP tool, <i>text_query_to_graph</i>, which chains three steps:
+            <br />
+            - <b>text_to_sql</b>: Gemini converts the question into a read-only PostgreSQL query, using the database schema and business rules as context <br />
+            - <b>execute_sql</b>: the query is run against the PostgreSQL database and returned as a DataFrame <br />
+            - <b>generate_graph</b>: Gemini looks at the question and a sample of the data to choose the best Plotly chart (bar, line, pie or scatter) and its axes
+            <br /><br />
+            The generated SQL, the data table and the chart are then displayed to the user. The Gemini model can be switched from the interface
+            to work around the free tier rate limits. The whole stack (app + database) starts with a single <i>docker-compose up</i>.
+            <br /><br />
+            Example questions: "How many croissants did we sell in 2025?", "Show me the sales trend over the last 5 years.",
+            "What is the total revenue per category?"
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer">
+      <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/victor-feuga/">
+        <image src="../assets/icons/linkedin.svg" class="footer-icon"/>
+      </a>
+
+      <a class="icon-link" target="_blank" href="https://huggingface.co/vicfeuga">
+        <image src="../assets/icons/hf.png" class="footer-icon"/>
+      </a>
+
+      <a class="icon-link" href="mailto:vicfeuga@gmail.com">
+        <image src="../assets/icons/mail.svg" class="footer-icon"/>
+      </a>
+    </div>
+
+	</body>
+</html>
